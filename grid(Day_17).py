@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt 
 
-data=pd.read_csv("suv_data.csv")
+data=pd.read_csv("suv_data (1).csv")
 # print(data.head(5))
 
 data.drop(['User ID','Gender'],inplace=True,axis=1)
@@ -33,22 +33,16 @@ print("score",score)
 
 from matplotlib.colors import ListedColormap
 X_set,y_set=X_train,y_train
-X1,X2=np.meshgrid(np.arange(start=X_set[:,0].min()-1,
-                            stop=X_set[:,0].max()+1,step=.01),
-                  np.arange(start=X_set[:,0].min()-1,
-                            stop=X_set[:,0].max()+1,step=.01)         )
+X1,X2=np.meshgrid(np.arange(start=X_set[:,0].min()-1,stop=X_set[:,0].max()+1,step=.01),np.arange(start=X_set[:,0].min()-1,stop=X_set[:,0].max()+1,step=.01)         )
 
-plt.contour(X1,X2,svc.predict(
-    np.array([X1.ravel(),X2.ravel()]).T).reshape(X1.shape),
-    alpha=0.75,cmap=ListedColormap('red','green'))
+plt.contour(X1,X2,svc.predict(np.array([X1.ravel(),X2.ravel()]).T).reshape(X1.shape),alpha=0.75,cmap=ListedColormap('red','green'))
 
 plt.xlim(X1.min(),X2.max())
 plt.ylim(X1.min(),X2.max())
 
 for i,j in enumerate(np.unique(y_set)):
-    plt.scatter(X_set[y_set==j,0],X_set[y_set==j,1],
-                c=ListedColormap(('red','green'))(i),label=j)
-    
+    plt.scatter(X_set[y_set==j,0],X_set[y_set==j,1],c=ListedColormap(('red','green'))(i),label=j)
+
 plt.title("Gauusian NB Algorithm salaried SUV data")
 plt.xlabel("salaried data for suv ")
 plt.ylabel("purchased suv car")
