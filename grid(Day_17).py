@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt 
 
-data=pd.read_csv("suv_data.csv")
+data=pd.read_csv("suv_data (1).csv")
 # print(data.head(5))
 
 data.drop(['User ID','Gender'],inplace=True,axis=1)
