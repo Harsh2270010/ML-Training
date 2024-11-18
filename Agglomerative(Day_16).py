@@ -10,9 +10,9 @@ data=pd.read_csv("driver-data.csv")
 
 X=data.iloc[:,[1,2]].values
 
-# import scipy.cluster.hierarchy as sch 
+import scipy.cluster.hierarchy as sch 
 
-# dendrogram=sch.dendrogram(sch.linkage(X,method="ward"))
+dendrogram=sch.dendrogram(sch.linkage(X,method="ward"))
 
 from sklearn.cluster import AgglomerativeClustering
 
